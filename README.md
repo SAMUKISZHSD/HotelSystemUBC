@@ -10,7 +10,7 @@ reservas com as opções:
 - Gerenciamento de Reservas;
 - Gerenciamento de Quartos da Reserva;
 - Gerenciamento de Tipos de Quarto;
-- 
+
 
 
 <h1> ⚙ Requisitos Específicos </h1>
