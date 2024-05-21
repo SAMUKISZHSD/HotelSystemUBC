@@ -1,0 +1,6 @@
+Um projeto de um sistema de reservas e gerenciamento de um hotel estilo CLI feito em java,maven,spring e banco de dados mysql via postgrees e arquitetura MVC aonde seja possivel fazer um login de um admin fixo que vai cadastrar as info de acesso de seus funcioarios (seja um CRUD de cadastro de funcionarios), apos isso o funcionario que foi cadastrado vai poder registrar os hospedes e fazer reservas, com isso, quero um crud de cadastro de hospedes, aonde tenha um crud de tipos de quartos a serem reservados e quartos reservados no nome do hospede que vai ficar no cadastro da reserva, quero que cada funcionalidade tenha um crud em si
+
+deve ter um gerenciameto de hospedes, funcionarios, reservas, quartos de reservas e tipos de quartos todos devem ter um crud
+
+primeiro faça a logica de um banco para esse sistema 
+segundo faça esse sistema seguindo estilo CLI com todas as funcionalidades citadas acima, seguindo a logica do banco
