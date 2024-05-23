@@ -1,18 +1,18 @@
-package br.com.brazcubas.libMgmtSys.model.dao;
+package hotel.example.model.dao;
 
 import java.util.List;
-import br.com.brazcubas.libMgmtSys.model.entity.AbstractEntity;
+import hotel.example.model.entity.AbstractEntity;
 
 public interface IDAO<T extends AbstractEntity> {
-    //>>>> REGISTER CONTROL 
+    // >>>>> CONTROLE DE REGISTRO
     void cadastrar(T entidade);
     void atualizar(T entidade);
     void excluir(int id);
-    T buscar(int id);
+    T buscarReserva(int id);
     List<T> listar();
-    //>>>> EMPRESTIMO CONTROL
-    void emprestar(T entidade);
-    void devolver(int id);
-    T buscarEmpr(int id);
+    // >>>>> CONTROLE DE RESERVAS
+    void reservar(T entidade);
+    void cancelarReserva(int id);
+    T listarReservas(int id);
     List<T> listarEmprest();
 }

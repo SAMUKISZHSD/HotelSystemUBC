@@ -1,60 +1,58 @@
-package br.com.brazcubas.libMgmtSys.controller;
+package hotel.example.controller;
 
 import java.util.List;
 
-import br.com.brazcubas.libMgmtSys.model.dao.IDAO;
-import br.com.brazcubas.libMgmtSys.model.entity.Livro;
+import hotel.example.model.dao.IDAO;
+import hotel.example.model.entity.Quarto; // Alterei o nome da entidade para "Quarto"
 
 public class QuartoController {
-    private final IDAO<Livro> livroDAO;
+    private final IDAO<Quarto> quartoDAO; // Alterei o nome da variável para "quartoDAO"
 
-    //>>>>>> CONSTRUTOR
-    public LivroController (IDAO<Livro> livroDAO) {
-      this.livroDAO = livroDAO;
+    // Construtor
+    public QuartoController(IDAO<Quarto> quartoDAO) {
+        this.quartoDAO = quartoDAO;
     }
 
-    //>>>>>> CONTROLA CADASTRO LIVRO
-    public String cadastrarLivro(Livro livro) {
-      livroDAO.cadastrar(livro);
-      return "Cadastro realizado!";
+    // Métodos para controle de quartos
+    public String cadastrarQuarto(Quarto quarto) {
+        quartoDAO.cadastrar(quarto);
+        return "Quarto cadastrado com sucesso!";
     }
 
-    public String atualizarLivro(Livro livro) {
-        livroDAO.atualizar(livro);
+    public String atualizarQuarto(Quarto quarto) {
+        quartoDAO.atualizar(quarto);
         return "Atualização realizada!";
-      }
-    
-    public String excluirLivro(int id) {
-      livroDAO.excluir(id);
-      return "Exclusão realizada!";
-    }
-  
-    public Livro buscarLivro(int id) {
-      return (Livro) livroDAO.buscar(id);
-    }
-  
-    public List<Livro> listarLivros() {
-      return livroDAO.listar();
     }
 
-    //>>>>>> CONTROLA EMPRESTIMO LIVRO
-    public Livro buscarLivroEmpr(int id) {
-      return (Livro) livroDAO.buscarEmpr(id);
+    public String excluirQuarto(int id) {
+        quartoDAO.excluir(id);
+        return "Quarto excluído com sucesso!";
     }
 
-    public String emprestaLivro(Livro livro) {
-      livroDAO.emprestar(livro);
-      return "Livro emprestado com sucesso!";
+    public Quarto buscarQuarto(int id) {
+        return quartoDAO.buscar(id);
     }
 
-    public String devolverLivro(int id) {
-      livroDAO.devolver(id);
-      return "Livro devolvido com sucesso!";
+    public List<Quarto> listarQuartos() {
+        return quartoDAO.listar();
     }
 
-    public List<Livro> listarLivrosEmprestados() {
-      return livroDAO.listarEmprest();
+    // Métodos para controle de reservas
+    public Quarto buscarQuartoReserva(int id) {
+        return quartoDAO.buscarReserva(id);
     }
 
+    public String reservarQuarto(Quarto quarto) {
+        quartoDAO.reservar(quarto);
+        return "Quarto reservado com sucesso!";
+    }
 
+    public String cancelarReserva(int id) {
+        quartoDAO.cancelarReserva(id);
+        return "Reserva cancelada com sucesso!";
+    }
+
+    public List<Quarto> listarQuartosReservados() {
+        return quartoDAO.listarReservas();
+    }
 }

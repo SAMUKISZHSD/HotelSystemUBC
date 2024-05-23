@@ -1,4 +1,4 @@
-package br.com.brazcubas.libMgmtSys.config;
+package hotel.example.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,8 +8,8 @@ import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 
 public class DatabaseConfig {
-    // using postgreSQL as DB
-    private static final String URL = "jdbc:postgresql://localhost:5432/db_libMgmtSys";
+    // Usando o PostgreSQL como banco de dados
+    private static final String URL = "jdbc:postgresql://localhost:5432/db_hotelMgmtSys";
     private static final String USER = "postgres";
     private static final String PASSWORD = "admin";
 
@@ -20,36 +20,34 @@ public class DatabaseConfig {
     public static void createTables() throws SQLException {
         try (Connection conexao = getConnection()) {
             DatabaseMetaData dbm = conexao.getMetaData();
-            // Snipet de validação existencia tabela livro
-            ResultSet tablesLivro = dbm.getTables(null, null, "livro", null); // getTables(catalog, schemaPattern, tableNamePattern, types)
-            if (!tablesLivro.next()) {
-                String sqlLivro = 
-                            "CREATE TABLE livro (" +
+            // Verifica a existência da tabela "quarto"
+            ResultSet tablesQuarto = dbm.getTables(null, null, "quarto", null);
+            if (!tablesQuarto.next()) {
+                String sqlQuarto =
+                        "CREATE TABLE quarto (" +
                                 "id serial PRIMARY KEY," +
-                                "titulo varchar(100) NOT NULL," +
-                                "autor varchar(100) NOT NULL," +
-                                "numPaginas int NOT NULL" +
-                            ");";
+                                "numero int NOT NULL," +
+                                "tipo varchar(50) NOT NULL," +
+                                "capacidade int NOT NULL," +
+                                "disponivel boolean NOT NULL" +
+                                ");";
                 Statement statement = conexao.createStatement();
-                statement.execute(sqlLivro);
+                statement.execute(sqlQuarto);
             }
-            // Snipet de validação da existencia tabela livroEmprestimo
-            ResultSet tablesLivroEmpr = dbm.getTables(null, null, "livroemprestado", null); 
-            if (!tablesLivroEmpr.next()) {
-                // Detalhe! Postgres, se não citarmos tipo \"LivroEmprestado\" no CREATE TABLE, ele cria tudo em minusculo por padrao, viu?
-                String sqlLivroEmpr = 
-                            "CREATE TABLE livroemprestado (" +
+            // Verifica a existência da tabela "reserva"
+            ResultSet tablesReserva = dbm.getTables(null, null, "reserva", null);
+            if (!tablesReserva.next()) {
+                String sqlReserva =
+                        "CREATE TABLE reserva (" +
                                 "id serial PRIMARY KEY," +
-                                "membro varchar(100) NOT NULL," +
-                                "funcionario varchar(100) NOT NULL," +
-                                "dt_emprest varchar(100) NOT NULL," +
-                                "id_livro int unique," +
-                                
-                                "CONSTRAINT id_livro_fk FOREIGN KEY (id_livro)" +
-                                    "REFERENCES livro(id)" +
-                            ");";
+                                "id_quarto int NOT NULL," +
+                                "data_inicio date NOT NULL," +
+                                "data_fim date NOT NULL," +
+                                "CONSTRAINT id_quarto_fk FOREIGN KEY (id_quarto)" +
+                                "REFERENCES quarto(id)" +
+                                ");";
                 Statement statement = conexao.createStatement();
-                statement.execute(sqlLivroEmpr);
+                statement.execute(sqlReserva);
             }
         } catch (SQLException e) {
             e.printStackTrace();
