@@ -1,5 +1,0 @@
-https://github.com/DaihSeven/Hotel-Java/tree/main/src
-
-https://github.com/dc-daniel/JAVA-Sistem-de-Reserva-de-Hotel
-
-https://github.com/NicoleMattes/Hotel-App/tree/main/src
