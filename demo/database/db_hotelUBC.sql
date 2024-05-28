@@ -60,5 +60,5 @@ CONSTRAINT id_quartoFK FOREIGN KEY (id_quarto) REFERENCES Quarto (id_quarto)
 );
 
 -- ADICIONAR RELAÇÃO RESERVAS A TABELA FUNCIONARIOS
-ALTER TABLE Funcionarios ADD CONSTRAINT id_reservasFK
-FOREIGN KEY(id_reservas) REFERENCES Reservas(id_reservas);
+--- ALTER TABLE Funcionarios ADD CONSTRAINT id_reservasFK
+--- FOREIGN KEY(id_reservas) REFERENCES Reservas(id_reservas);
