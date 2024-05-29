@@ -17,4 +17,3 @@ associados a ela. Portanto, a cardinalidade entre Quartos e Reservas é "muitos 
 Tipos de Quarto
 Vários quartos podem ser do mesmo tipo, mas um tipo de quarto pode ser associado a um quarto.
 Portanto, a cardinalidade entre Tipos de Quarto e Quartos da Reserva é "muitos para muitos".
-
